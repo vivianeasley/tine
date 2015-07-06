@@ -2,7 +2,7 @@
 
 ### Demo ###
 
-* http://robertpage.github.io/lodestone/
+* http://robertpage.github.io/tine/
 
 ### Basic Info ###
 
