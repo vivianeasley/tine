@@ -8,7 +8,7 @@ var compileLess = require('broccoli-less-single');
 //   outputFile: '/libraries.js'
 // });
 var scripts = concat('js/', {
-  inputFiles: ['**/polyfills.js', '**/settings.js', '**/timer.js', '**/save.js', '**/app.js'],
+  inputFiles: ['**/polyfills.js', '**/settings.js', '**/timer.js', '**/save.js', '**/main.js'],
   outputFile: '/scripts.js'
 });
 
@@ -17,13 +17,13 @@ var storyJs = concat('js/', {
   outputFile: '/storyData.js'
 });
 
-// var prodJs = concat('js/', {
-//   inputFiles: ['**/product.js'],
-//   outputFile: '/product.js'
-// });
+var menuJs = concat('js/', {
+  inputFiles: ['**/menu.js'],
+  outputFile: '/menu.js'
+});
 
 var appCss = compileLess(['css/'], 'main.less', '/styles.css')
-// var prodCss = compileLess(['css/'], 'product.less', '/product.css')
+var menuCss = compileLess(['css/'], 'menu.less', '/menu.css')
 
 var publicAssets = pickFiles('public/', {
   srcDir: '/assets',
@@ -38,9 +38,9 @@ var publicFiles = pickFiles('public/', {
   destDir: 'index.html'
 });
 
-// var publicProduct = pickFiles('public/', {
-//   srcDir: 'product.html',
-//   destDir: 'product.html'
-// });
+var publicMenu = pickFiles('public/', {
+  srcDir: 'menu.html',
+  destDir: 'menu.html'
+});
 
-module.exports = mergeTrees([ storyJs, scripts, appCss, publicAssets, publicIconFont, publicFiles ]); //libraries, prodJs, publicProduct, prodCss,
+module.exports = mergeTrees([ storyJs, scripts, appCss, menuJs, publicMenu, menuCss, publicAssets, publicIconFont, publicFiles ]); //libraries, menuJs, publicMenu, menuCss,
