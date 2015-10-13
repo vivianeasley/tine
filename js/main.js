@@ -253,7 +253,6 @@ var MAIN = (function ( ) {
 
   function renderSavedGame ( ) {
     var emptyArray = [];
-    console.log(SAVE.saveData)
     if (window.confirm("Would you want to start from where you left off?")) { 
       rebuildGame( );
     } else {
