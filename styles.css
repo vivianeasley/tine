@@ -423,6 +423,9 @@ th {
 body {
   font-family: 'droid_sansregular';
 }
+.game {
+  position: relative;
+}
 .main-wrapper {
   position: relative;
   padding: 10px 0 20px 0;

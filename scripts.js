@@ -113,7 +113,6 @@ var MAIN = (function ( ) {
 
   // Public Variables
   var MA = { };
-  // MA.moduleProperty = 2;
 
   // Private Variables
   var fText       = 0;
@@ -130,8 +129,7 @@ var MAIN = (function ( ) {
     MA.nextBubble( );
   };
 
-  // Main game logic. Calls a timeout funct that wauts then call nextBubble. Decides how to proceed with bubble display.
-
+  // Main game logic. Calls a timeout funct that waits then calls nextBubble. Decides how to proceed with bubble display.
   MA.nextBubble = function ( ) {
     if ( Number.isInteger(pData[fID].text[fText]) ) {
       buildWaitText( );
@@ -155,10 +153,11 @@ var MAIN = (function ( ) {
         fID   = pData[fID].options[SAVE.saveData[fCount]].id;
         fCount++;
 
+        
         if ( fCount === SAVE.saveData.length ) {
           fRebuilding     = false;
           SETTINGS.speedy = false;
-          MA.nextBubble( );
+          // MA.nextBubble( );
           fText = 0;
           return;
         } else {
@@ -177,7 +176,7 @@ var MAIN = (function ( ) {
 
   // Private Functions
 
-  // This build both the players and the protagonists text bubbles
+  // This builds both the players and the protagonists text bubbles
 
   function buildBubble ( content, type ) {
     if ( content === undefined || type === undefined ) {
@@ -302,10 +301,10 @@ var MAIN = (function ( ) {
   }
 
   function rewind ( id ) {
-    if ( SAVE.saveData.length < 2 ) {
-      console.log('too few');
-      return;
-    }
+    // if ( SAVE.saveData.length < 1 ) {
+    //   console.log('too few');
+    //   return;
+    // }
 
     SAVE.saveData = SAVE.saveData.slice( 0, id )
     rebuildGame( );
@@ -347,10 +346,10 @@ var MAIN = (function ( ) {
     var emptyArray = [];
     var charactersStorage ;
     if(typeof(Storage) !== "undefined") {
-      if ( localStorage.getItem("tineSave") ) {
+      if ( localStorage.getItem("tineSave") && localStorage.getItem("tineSave") !== '[]') {
         charactersStorage = localStorage.getItem("tineSave");
         SAVE.saveData     = JSON.parse(charactersStorage);
-        console.log(SAVE.saveData)
+
         renderSavedGame( );
 
       } else {
@@ -364,6 +363,7 @@ var MAIN = (function ( ) {
   }
 
   function renderSavedGame ( ) {
+    var emptyArray = [];
     if (window.confirm("Would you want to start from where you left off?")) { 
       rebuildGame( );
     } else {
