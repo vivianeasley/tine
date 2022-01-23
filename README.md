@@ -2,7 +2,7 @@
 
 ### Demo ###
 
-* http://robertpage.github.io/tine/
+* http://vivianeasley.github.io/tine/
 
 ### Basic Info ###
 
